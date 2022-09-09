@@ -28,6 +28,11 @@ public class ItemDAO {
     }
 
     public void deleteItem(Integer id) {
-        list.getItemList().remove(id);
+        list.getItemList().remove(list.getItemList().get(id));
+        // Update all remaining Ids
+
+        for(int i = id; id < list.getItemList().size(); ++i) {
+            list.getItemList().get(id).setId(id - 1);
+        }
     }
 }
