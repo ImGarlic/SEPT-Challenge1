@@ -61,4 +61,12 @@ public class ItemController {
 
         return itemDAO.getItem(id);
     }
+
+    @DeleteMapping(path="/item{id}")
+    public void deleteItem(@PathVariable Integer id)
+    {
+        itemDAO.deleteItem(id - 1);
+    }
 }
+
+
