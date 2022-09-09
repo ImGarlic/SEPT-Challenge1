@@ -4,7 +4,7 @@ import com.garlic.challenge.model.Item;
 import com.garlic.challenge.model.Items;
 
 import org.springframework.stereotype.Repository;
-
+@Repository
 public class ItemDAO {
     private static Items list = new Items();
 
