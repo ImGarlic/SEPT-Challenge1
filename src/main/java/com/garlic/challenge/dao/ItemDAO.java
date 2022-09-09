@@ -30,9 +30,9 @@ public class ItemDAO {
     public void deleteItem(Integer id) {
         list.getItemList().remove(list.getItemList().get(id));
         // Update all remaining Ids
-
-        for(int i = id; id < list.getItemList().size(); ++i) {
-            list.getItemList().get(id).setId(id - 1);
+        for(int i = id; i < list.getItemList().size(); ++i) {
+            list.getItemList().get(i).setId(list.getItemList().get(i).getId() - 1);
+            System.out.println(i);
         }
     }
 }
