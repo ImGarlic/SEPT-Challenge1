@@ -26,7 +26,7 @@ public class ItemController {
             @RequestBody Item item)
             throws Exception
     {
-        Integer id = itemDAO.getAllItems().getItemList().size + 1;
+        Integer id = itemDAO.getAllItems().getItemList().size() + 1;
         item.setId(id);
 
         itemDAO.addItem(item);
@@ -48,17 +48,17 @@ public class ItemController {
     @GetMapping(path="/item{id}", produces = "application/json")
     public Item getItem(@PathVariable Integer id)
     {
-        return itemDAO.getItem(id);
+        return itemDAO.getItem(id - 1);
     }
 
     @PutMapping(path="/item{id}", consumes = "application/json", produces = "application/json")
     public Item updateItem(@RequestBody Item updatedItem, @PathVariable Integer id)
     {
-        itemDAO.getItem(id).setTitle(updatedItem.getTitle());
-        itemDAO.getItem(id).setDesc(updatedItem.getDesc());
-        itemDAO.getItem(id).setImagePath(updatedItem.getImagePath);
-        itemDAO.getItem(id).setPrice(updatedItem.getPrice());
+        itemDAO.getItem(id - 1).setTitle(updatedItem.getTitle());
+        itemDAO.getItem(id - 1).setDesc(updatedItem.getDesc());
+        itemDAO.getItem(id - 1).setImagePath(updatedItem.getImagePath());
+        itemDAO.getItem(id - 1).setPrice(updatedItem.getPrice());
 
-        return itemDAO.getItem(id);
+        return itemDAO.getItem(id - 1);
     }
 }
